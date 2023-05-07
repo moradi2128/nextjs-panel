@@ -2,16 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background-app-rgb: 244, 245, 247;
-}
-
 @layer base {
-  html,
-  body {
-    font-family: var(--vazir-font);
-  }
   :root {
+    --background-app-rgb: 244, 245, 247;
     --color-primary-900: 74, 109, 255;
     --color-primary-800: 92, 124, 255;
     --color-primary-700: 110, 138, 255;
@@ -39,7 +32,6 @@
     --color-red-300: 252, 165, 165;
   }
 }
-
 
 html,
 body {
