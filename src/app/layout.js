@@ -1,4 +1,4 @@
-import vazirFont from "../../constants/localFonts";
+import vazirFont from "@/constants/localFonts";
 import "./globals.css";
 
 export const metadata = {
