@@ -5,7 +5,8 @@
 @layer base {
   :root {
     --background-app-rgb: 244, 245, 247;
-    --color-primary-900: 74, 109, 255;
+    /* --color-primary-900: 74, 109, 255; */
+    --color-primary-900: 36, 76, 243;
     --color-primary-800: 92, 124, 255;
     --color-primary-700: 110, 138, 255;
     --color-primary-600: 128, 153, 255;
@@ -30,7 +31,109 @@
     --color-error: 255, 71, 87;
     --color-red-500: 239, 68, 68;
     --color-red-300: 252, 165, 165;
+
+    /* === menu === */
+    --nav-h: 60;
   }
+}
+@layer components {
+  p {
+    @apply text-gray-400 font-bold text-[14px];
+  }
+
+  .textField__input {
+    @apply block w-full rounded-lg border outline-none bg-gray-100 border-gray-200 px-4 py-4 text-sm text-secondary-900 placeholder-gray-300
+      hover:border-primary-300 focus:outline-none focus:bg-white focus:border-primary-300 focus:shadow-input-focus
+      placeholder:font-bold
+      transition-all duration-200 ease-in-out;
+  }
+  .btn {
+    @apply px-2 py-1 font-bold rounded-2xl transition-all duration-300;
+  }
+  .btn__primary {
+    @apply px-4 py-3 bg-primary-900 text-white hover:bg-primary-800 shadow-lg shadow-primary-300;
+  }
+  .btn__outline {
+    @apply px-4 py-3 border border-primary-900 bg-transparent text-primary-900 hover:bg-primary-900 hover:text-white hover:shadow-lg shadow-primary-300;
+  }
+  /* === badge === */
+  .badge {
+    @apply px-3 py-2 whitespace-nowrap rounded-lg text-white shadow-md;
+  }
+  .badge__primary {
+    @apply bg-primary-900 shadow-primary-600;
+  }
+  .badge__secondary {
+    @apply bg-secondary-300 shadow-secondary-300;
+  }
+  .badge__success {
+    @apply bg-green-500 shadow-green-400;
+  }
+  .badge__error {
+    @apply bg-red-500 py-2 shadow-red-400;
+  }
+  .label {
+    @apply block mb-3 font-extrabold;
+  }
+  /* === Tables === */
+  ._table {
+    @apply w-full text-sm text-left text-gray-900;
+  }
+  ._thead {
+    @apply text-xs text-gray-700 uppercase;
+  }
+  ._tr {
+    @apply w-full;
+  }
+  ._tbody {
+    @apply w-full;
+  }
+  ._th {
+    @apply px-6 py-3 whitespace-nowrap text-right;
+  }
+  ._tr {
+    @apply border-b text-right font-bold;
+  }
+  ._td {
+    @apply px-6 py-4;
+  }
+  .center {
+    @apply flex justify-center items-center;
+  }
+  /* === CRUD style ==== */
+  .crud__style {
+    @apply shadow-lg  p-3 rounded-xl hover:shadow-card border border-white;
+  }
+  .detail__icon {
+    @apply bg-primary-500/20  shadow-primary-400/10;
+  }
+  .delete__icon {
+    @apply bg-red-400/10 shadow-red-400/10;
+  }
+  .edit__icon {
+    @apply bg-gray-400/10  shadow-gray-400/10;
+  }
+}
+/* === scroll style === */
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-primary-400));
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-primary-700));
 }
 
 html,
@@ -41,4 +144,51 @@ body {
   min-height: 100vh;
   user-select: none;
   background-color: var(--background-app-rgb);
+}
+
+/* === swiper === */
+
+.thumb-gallery {
+  height: 400px !important;
+  width: 100%;
+}
+
+.thumb-gallery-detail-product {
+  height: 10%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.thumb-gallery-detail-product .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.thumb-gallery-detail-product .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* === main slider (home page) */
+.main-slider .swiper-button-next,
+.main-slider .swiper-button-prev {
+  top: 90%;
+}
+.main-slider .swiper-button-next {
+  right: 15% !important;
+}
+.main-slider .swiper-button-prev {
+  right: 10% !important;
+}
+
+.main-slider .swiper-button-prev:after,
+.main-slider .swiper-button-next:after {
+  font-size: 30px !important;
 }
