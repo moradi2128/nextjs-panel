@@ -63,7 +63,7 @@ const testData = [
 ]
 const Footer = () => {
     return (
-        <footer className="bg-white mt-14">
+        <footer className="mt-14">
             <div
                 className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8"
             >
@@ -73,7 +73,7 @@ const Footer = () => {
                             <Logo classNameImg="w-[200px]" />
                         </div>
 
-                        <p className="mt-4 max-w-xs text-gray-500 text-justify">
+                        <p className="mt-4 max-w-xs text-slate-500 dark:text-slate-400 text-justify">
                             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
                         </p>
 
@@ -83,7 +83,7 @@ const Footer = () => {
                                     href="/"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-slate-700 dark:text-slate-300 transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Facebook</span>
 
@@ -107,7 +107,7 @@ const Footer = () => {
                                     href="/"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-slate-700 dark:text-slate-300 transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Instagram</span>
 
@@ -131,7 +131,7 @@ const Footer = () => {
                                     href="/"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-slate-700 dark:text-slate-300 transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Twitter</span>
 
@@ -153,7 +153,7 @@ const Footer = () => {
                                     href="/"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-slate-700 dark:text-slate-300 transition hover:opacity-75"
                                 >
                                     <span className="sr-only">GitHub</span>
 
@@ -177,7 +177,7 @@ const Footer = () => {
                                     href="/"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-slate-700 dark:text-slate-300 transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Dribbble</span>
 
@@ -203,11 +203,11 @@ const Footer = () => {
                     >
                         {(testData || []).map(item => {
                             return <div key={item.id}>
-                                <p className="font-medium text-gray-900">{item.title}</p>
+                                <p className="font-medium text-slate-900 dark:text-slate-200">{item.title}</p>
                                 <ul className="mt-6 space-y-4 text-sm">
                                     {(item.items || []).map((li) => {
                                         return <li key={li.id}>
-                                            <Link href={li.href} className="text-gray-700 transition hover:opacity-75">
+                                            <Link href={li.href} className="text-slate-700 dark:text-slate-400 transition hover:opacity-75">
                                                 {li.label}
                                             </Link>
                                         </li>
@@ -218,7 +218,7 @@ const Footer = () => {
                     </div>
                 </div>
                 {/* === sub Footer === */}
-                <p className="text-xs text-gray-500 ">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                     &copy; تمامی حقوق محفوظ می باشد  {new Date().toLocaleDateString('fa-IR', { year: 'numeric' })}
                 </p>
             </div>

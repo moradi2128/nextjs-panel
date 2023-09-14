@@ -1,7 +1,6 @@
-import vazirFont from "@/constants/localFonts";
-import { Toaster } from "react-hot-toast";
+import ThemeProvider from "@/Layout/ThemeProvider";
 import "../globals.css";
-import Providers from "../Providers";
+
 
 
 export const metadata = {
@@ -11,18 +10,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="fa" dir="rtl">
-            <body
-                suppressHydrationWarning={true}
-                className={`${vazirFont.variable} font-sans`}>
-                <Providers>
-                    <Toaster />
-                    {/* === body === */}
-                    <div >
-                        {children}
-                    </div>
-                </Providers>
-            </body>
-        </html>
+        <ThemeProvider>
+            <main >
+                {children}
+            </main>
+        </ThemeProvider>
     );
 }

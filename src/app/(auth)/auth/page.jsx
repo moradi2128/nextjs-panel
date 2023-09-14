@@ -13,12 +13,16 @@ import Image from 'next/image'
 import Button from '@/common/Button'
 import { HomeIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { toEnglishNumber } from '@/utils/toEnglishNumber'
+import CompleteProfile from './CompleteProfile'
+const FORM_MODE = {
+  sendOtp: "sendOtp",
+  checkOtp: "checkOtp",
+  completeProfile: "completeProfile"
+}
 const RESEND_TIME = 90
-const STEP_SEND_OTP = "sendOtp"
-const STEP_CHECK_OTP = "checkOtp"
 const page = () => {
   const router = useRouter()
-  const [step, setStep] = useState(STEP_SEND_OTP)
+  const [step, setStep] = useState(FORM_MODE.sendOtp)
   const [phoneNumber, setPhoneNumber] = useState("")
   const [otp, setOtp] = useState("")
   const [time, setTime] = useState(0)
@@ -42,11 +46,11 @@ const page = () => {
       setError("لطفا شماره تماس معتبر وارد کنید")
       isValid = false
     }
-    if (!otp && step === STEP_CHECK_OTP) {
+    if (!otp && step === FORM_MODE.checkOtp) {
       setError("لطفا کد احراز هویت خود را وارد کنید")
       isValid = false
     }
-    if (!otp.length !== 6 && step === STEP_CHECK_OTP) {
+    if (!otp.length !== 6 && step === FORM_MODE.checkOtp) {
       setError("لطفا کد احراز هویت معتبر وارد کنید")
       isValid = false
     }
@@ -60,10 +64,10 @@ const page = () => {
     try {
       const data = await mutateAsync({ phoneNumber })
       toast.success(data?.message);
-      setStep(STEP_CHECK_OTP)
+      setStep(FORM_MODE.checkOtp)
       setTime(RESEND_TIME)
     } catch (error) {
-      setStep(STEP_CHECK_OTP)
+      setStep(FORM_MODE.checkOtp)
       setTime(RESEND_TIME)
       if (error?.response?.data) {
         toast.error(error?.response?.data.message);
@@ -81,7 +85,8 @@ const page = () => {
       if (user.isActive) {
         router.push("/")
       } else {
-        router.push("/complete-profile")
+        setStep(FORM_MODE.completeProfile)
+        // router.push("/complete-profile")
       }
     } catch (error) {
       if (error?.response?.data) {
@@ -119,7 +124,7 @@ const page = () => {
   // === render Steps components ===
   const renderStep = () => {
     switch (step) {
-      case STEP_SEND_OTP:
+      case FORM_MODE.sendOtp:
         return <SendOTPForm
           phoneNumber={phoneNumber}
           onChange={phoneNumberHandler}
@@ -128,7 +133,7 @@ const page = () => {
           // errorMessage={error}
           onFocus={() => setError("")}
         />
-      case STEP_CHECK_OTP:
+      case FORM_MODE.checkOtp:
         return <CheckOTPForm
           onSubmit={checkOtpHandler}
           onResendOtp={onSubmitHandler}
@@ -141,9 +146,11 @@ const page = () => {
           onFocus={() => setError("")}
           goBack={() => {
             setError("")
-            setStep(STEP_SEND_OTP)
+            setStep(FORM_MODE.sendOtp)
           }}
         />
+      case FORM_MODE.completeProfile:
+        return <CompleteProfile />
       default:
         return null;
     }
@@ -175,7 +182,7 @@ const page = () => {
           </div>
         </div>
         <div className='relative overflow-hidden h-full flex justify-center items-center row-span-1 col-span-none row-start-1 md:row-start-auto md:row-span-5 md:col-span-2  w-full rounded-tr-[50px] rounded-br-[50px]'>
-          <Image placeholder="blur" src={bannerImg} className="absolute inset-0 h-full w-ful -z-10" alt="banner"/>
+          <Image placeholder="blur" src={bannerImg} className="absolute inset-0 h-full w-ful -z-10" alt="banner" />
           <div className="hidden md:block text-white  backdrop-blur-md max-w-[65%] min-w-[60%] p-12 rounded-2xl shadow-light">
             <h4 className='text-2xl mb-8 '>خوش آمدید!</h4>
             <p className='mb-8 text-justify text-slate-400' >لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>

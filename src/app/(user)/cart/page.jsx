@@ -5,7 +5,7 @@ import { useGetUser } from '@/hooks/useAuth'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'
-import SectionLayout from '../../../Layout/SectionLayout'
+import SectionLayout from '@/Layout/SectionLayout'
 
 const Cart = () => {
   const { data, isLoading } = useGetUser()

@@ -4,7 +4,7 @@ import { useGetAllUsers } from '@/hooks/useAuth'
 import Link from 'next/link'
 
 import React, { useState } from 'react'
-import SectionLayout from '../../../../Layout/SectionLayout'
+import SectionLayout from '@/Layout/SectionLayout'
 import UsersTable from './UsersTable'
 import clsxm from '@/lib/clsxm'
 import queryString from 'query-string'

@@ -4,9 +4,9 @@ export async function setItemAsync(key = "", value = "") {
   }
 }
 
-export async function getItemAsync(key = "") {
+export function getItemAsync(key = "") {
   if (key) {
-    return await localStorage.getItem(key);
+    return localStorage.getItem(key);
   }
   return null;
 }

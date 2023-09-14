@@ -1,3 +1,4 @@
+import clsx from "clsx"
 
 const Loading = ({ width = "70", height = "40", color = "rgb(var(--color-primary-900))" }) => {
     return (
@@ -14,7 +15,7 @@ const Loading = ({ width = "70", height = "40", color = "rgb(var(--color-primary
         //     visible={true}
         // />
         <div className='h-full w-full flex justify-center items-center'>
-            <div className='loading loading-dots text-primary-900' />
+            <div className={clsx('loading loading-dots',`text-[${color}]`)} />
         </div>
     )
 }

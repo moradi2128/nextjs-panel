@@ -18,7 +18,7 @@ const RadioInput = ({
                 onChange={onChange}
                 className="radio radio-primary radio-sm"
             />
-            <label htmlFor={id} className="cursor-pointer mx-2 font-bold">{label}</label>
+            <label htmlFor={id} className="cursor-pointer mx-2 font-bold dark:text-slate-300">{label}</label>
         </div>
     )
 }

@@ -57,7 +57,7 @@ const ProductDetail = async ({ params }) => {
                 <div className="space-y-5 ">
                     <div>
                         {/* === Title === */}
-                        <div className="truncate text-xl font-medium text-gray-600 lg:text-2xl">
+                        <div className="truncate text-xl font-medium text-gray-600 dark:text-gray-300 lg:text-2xl">
                             {product.title}
                         </div>
                         {/* === Brand === */}
@@ -79,7 +79,7 @@ const ProductDetail = async ({ params }) => {
                         {/* === Category === */}
                         {product.category &&
                             <div className='flex gap-2 mb-2'>
-                                <span className='text-gray-500 font-bold '>
+                                <span className='text-gray-500 dark:text-gray-300 font-bold '>
                                     <RectangleStackIcon className="w-4 h-4 inline ml-2" />
                                     دسته بندی :</span>
                                 <Link href={`/category/${product.category.englishTitle}`} className="text-gray-400">
@@ -90,7 +90,7 @@ const ProductDetail = async ({ params }) => {
                         {/* === Tags === */}
                         {product.tags.length !== 0 &&
                             <div className='flex gap-2'>
-                                <span className='text-gray-500 font-bold '>
+                                <span className='text-gray-500 dark:text-gray-300 font-bold '>
                                     <TagIcon className="w-4 h-4 inline ml-2" />
                                     تگ ها :</span>
                                 <Tags tags={product.tags} />

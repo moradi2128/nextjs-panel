@@ -29,7 +29,7 @@ const CardProduct = ({ product }) => {
                         <div>
                             <Link
                                 href={`/products/${slug}`}>
-                                <h2 className='font-bold text-xl'>{title}</h2>
+                                <h2 className='font-bold text-xl dark:text-slate-300'>{title}</h2>
 
                             </Link>
                             {/* <div className='text-xs'>
@@ -52,14 +52,14 @@ const CardProduct = ({ product }) => {
                 </Link>
             </div>
             {/* === footer === */}
-            <div className='flex items-center gap-2 border-t border-gray-200 pt-3 mt-3 min-h-[75px]'>
+            <div className='flex items-center gap-2 border-t border-gray-200 dark:border-gray-600 pt-3 mt-3 min-h-[75px]'>
                 <AddToCart product={product} className="flex-1" />
                 <div className="flex-1 text-end">
                     {!!discount && <div className='mb-1 flex justify-end items-center'>
-                        <s className='font-bold text-gray-400 text-lg'>{toPersianNumberWithComma(price)}</s>
+                        <s className='font-bold text-gray-400 dark:text-slate-300 text-lg'>{toPersianNumberWithComma(price)}</s>
                         <span className='badge badge__error mr-3'>% {PersianNumbers(discount)}</span>
                     </div>}
-                    <span className='font-bold text-gray-800 text-xl'>{toPersianNumberWithComma(offPrice)} تومان</span>
+                    <span className='font-bold text-gray-800 dark:text-slate-200 text-xl'>{toPersianNumberWithComma(offPrice)} تومان</span>
                 </div>
             </div>
         </div>
