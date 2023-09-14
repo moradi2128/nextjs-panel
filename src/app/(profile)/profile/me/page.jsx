@@ -75,7 +75,11 @@ const page = () => {
     )
 }
 const UserCard = ({ user, createdAt, role, avatar, changeAvatarHandler }) => {
-    return <div className='border rounded-2xl shadow-card hover:shadow-light transition-all duration-200 p-5 space-y-3 sticky top-0 self-start'>
+    const RenderText = ({ text }) => {
+        return <span className='font-bold text-xs text-slate-900 dark:text-gray-500'>{text}
+        </span>
+    }
+    return <div className='border dark:border-gray-600 rounded-2xl shadow-card hover:shadow-light transition-all duration-200 p-5 space-y-3 sticky top-0 self-start'>
         {/* === Header === */}
         <div className="w-full flex justify-center">
             <div className='relative' htmlFor="avatar">
@@ -92,19 +96,18 @@ const UserCard = ({ user, createdAt, role, avatar, changeAvatarHandler }) => {
                 </label>
             </div>
         </div>
-        <h4 className="font-bold text-lg text-center">{user.name}</h4>
+        <h4 className="font-bold text-lg text-center dark:text-gray-300">{user.name}</h4>
         <p className="font-bold text-gray-400 text-md text-center block">{user.biography}</p>
 
         {/* === content === */}
         <div className="mb-3 flex flex-row items-center gap-3 ">
             <h5 className='text-primary-600 text-[16px] font-bold'>ایمیل : </h5>
-            <span className='font-bold text-base text-slate-900'>{user.email}</span>
+            <RenderText text={user.email} />
         </div>
         <div className="mb-3 flex flex-row items-center gap-3">
             <h5 className='text-primary-600 text-[16px] font-bold'>شماره تماس : </h5>
             <div className='flex flex-row items-center gap-2 '>
-                <span className='font-bold text-base text-slate-900'>{user.phoneNumber}
-                </span>
+                <RenderText text={user.phoneNumber} />
                 {user.isVerifiedPhoneNumber && <span className='text-green-500 inline text-[12px]'>
                     <CheckCircleIcon className="w-4 h-4 inline ml-1" />
                     تایید </span>}
@@ -112,11 +115,11 @@ const UserCard = ({ user, createdAt, role, avatar, changeAvatarHandler }) => {
         </div>
         <div className="mb-3 flex flex-row items-center gap-3">
             <h5 className='text-primary-600 text-[16px] font-bold'>تاریخ عضویت : </h5>
-            <span className='font-bold text-base text-slate-900'>{toLocalDateStringShort(createdAt)}</span>
+            <RenderText text={toLocalDateStringShort(createdAt)} />
         </div>
         <div className="mb-3 flex flex-row items-center gap-3">
             <h5 className='text-primary-600 text-[16px] font-bold inline ml-2'>نوع دسترسی : </h5>
-            <span className='font-bold text-base text-slate-900'>{role === "ADMIN" ? "ادمین" : "کاربر"}</span>
+            <RenderText text={role === "ADMIN" ? "ادمین" : "کاربر"} />
         </div>
     </div>
 }

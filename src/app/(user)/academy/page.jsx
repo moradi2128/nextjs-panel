@@ -9,7 +9,7 @@ import AcademyPagination from './Pagination/AcademyPagination'
 const page = () => {
     return (
         <div className='container'>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-5 relative">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-5 relative mt-10">
                 {/* === Aside === */}
                 <aside className='col-span-1 md:col-span-1 sticky top-0 rounded-lg'>
                     <AcademyAside />

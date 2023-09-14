@@ -7,7 +7,7 @@ import { creteObjectWithValue } from '@/utils/creteObjectWithValue'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import SectionLayout from '../../../../../Layout/SectionLayout'
+import SectionLayout from '@/Layout/SectionLayout'
 export const couponsTextField = [
     { id: 1, label: "کد", name: "code" },
     { id: 2, label: "مقدار(مبلغ)", name: "amount" },

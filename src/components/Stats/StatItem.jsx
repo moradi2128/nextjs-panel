@@ -22,7 +22,7 @@ const StatItem = ({ content, horizontal = false }) => {
                 <div>
                     <div className={`${horizontal ? "flex flex-col-reverse" : "block"}`}>
                         <div className={clsxm("flex flex-row gap-4  items-center", horizontal ? "mb-2" : "mb-4")}>
-                            {Icon && <div className="p-4 rounded-2xl border border-gray-200 ">
+                            {Icon && <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-600">
                                 <Icon className={clsxm("w-6 h-6")} style={{ color: iconColor }} />
                             </div>}
                             <div className="flex flex-row gap-3 items-center">
@@ -36,7 +36,7 @@ const StatItem = ({ content, horizontal = false }) => {
                                 <span className={clsxm("font-bold text-md", percentColor)}>{PersianNumbers(isProfit ? percent + "+" : percent + "-")}</span>
                             </div>
                         </div>
-                        <h4 className="text-gray-500 font-bold text-lg mb-2">{title}</h4>
+                        <h4 className="text-gray-500 dark:text-gray-300 font-bold text-lg mb-2">{title}</h4>
                     </div>
                     <h5 className="font-bold text-xl">
                         {toPersianNumberWithComma(titleValue)} تومان

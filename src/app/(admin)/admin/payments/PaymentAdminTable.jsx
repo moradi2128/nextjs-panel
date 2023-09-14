@@ -30,7 +30,7 @@ const PaymentAdminTable = ({ payments }) => {
                                 </div>
                             </td>
                             <td className="_td">{payment.cart.productDetail.map((product) => {
-                                return <span key={product._id} className="whitespace-nowrap">{product.title}</span>
+                                return <span key={product._id} className="whitespace-nowrap">{product.title + " "}</span>
                             })}</td>
 
                             <td className="_td font-bold">{toPersianNumberWithComma(payment.amount)}</td>

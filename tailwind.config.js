@@ -16,7 +16,9 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/common/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Layout/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
@@ -61,7 +63,7 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: false, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
+    themes: ["light", "dark"], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
     darkTheme: "light",
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
@@ -70,9 +72,5 @@ module.exports = {
     prefix: "", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
     logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
-    require("daisyui"),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };

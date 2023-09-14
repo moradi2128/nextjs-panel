@@ -2,7 +2,7 @@
 import LineChart from '@/components/Chrt/LineChart'
 import { CreditCardIcon, ReceiptPercentIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 import React, { useEffect, useState } from 'react'
-import AdminCardLayout from '../../../Layout/AdminCardLayout'
+import AdminCardLayout from '@/Layout/AdminCardLayout'
 import ResentSales from './ResentSales'
 
 

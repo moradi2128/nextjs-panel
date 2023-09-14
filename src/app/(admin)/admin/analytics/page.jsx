@@ -1,7 +1,7 @@
 import AreaChart from '@/components/Chrt/AreaChart'
 import StatItem from '@/components/Stats/StatItem'
 import React from 'react'
-import AdminCardLayout from '../../../../Layout/AdminCardLayout'
+import AdminCardLayout from '@/Layout/AdminCardLayout'
 import PopularProductsAdminTable from './PopularProductsAdminTable'
 import productImg from "../../../../../public/assets/images/product.jpg"
 const page = () => {

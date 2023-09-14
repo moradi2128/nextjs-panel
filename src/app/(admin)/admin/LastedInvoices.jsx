@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminCardLayout from '../../../Layout/AdminCardLayout'
+import AdminCardLayout from '@/Layout/AdminCardLayout'
 import LastedInvoicesAdminTable from './LastedInvoicesTable'
 
 const LastedInvoices = ({ data }) => {

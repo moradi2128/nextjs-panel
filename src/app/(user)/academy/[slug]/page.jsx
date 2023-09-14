@@ -8,7 +8,7 @@ import React from 'react'
 import { tagsData } from '../../../../../dummy'
 import avatarImg from "../../../../../public/assets/images/avatar.jpg"
 import coverImg from "../../../../../public/assets/images/blog-detail-banner.webp"
-import CardAcademyLayout from '../../../../Layout/CardAcademyLayout'
+import CardAcademyLayout from '@/Layout/CardAcademyLayout'
 import AcademyCategories from '../Aside/AcademyCategories'
 import AcademyTags from '../Aside/AcademyTags'
 import LastPost from '../LastPost/LastPost'
@@ -16,7 +16,7 @@ const page = () => {
     // const params = useParams();
 
     return (
-        <div className="container">
+        <div className="container mt-8">
             <div className='h-[60vh] w-full rounded-xl overflow-hidden mb-16 shadow-light'>
                 <Image src={coverImg} className="w-full h-full object-cover" />
             </div>
@@ -24,7 +24,7 @@ const page = () => {
                 <div className="md:col-span-4">
                     {/* === owner Info === */}
                     <div className="mb-5 space-y-2">
-                        <h1 className="text-3xl font-bold">چگونه گوشی آیفون را ریست کنیم ؟!</h1>
+                        <h1 className="text-3xl font-bold dark:text-gray-200">چگونه گوشی آیفون را ریست کنیم ؟!</h1>
                         <div>
                             <InfoAvatar name="محمدرضا مرادی" date={new Date()} url={avatarImg} />
                         </div>
@@ -33,7 +33,7 @@ const page = () => {
                     <aside className={clsx(
                         "mb-10",
                         "prose-lg",
-                        "prose-p:text-justify prose-p:text-gray-500",
+                        "prose-p:text-justify prose-p:text-gray-500 dark:prose-p:text-gray-400 ",
                         "prose-blockquote:p-0 prose-blockquote:text-gray-600 prose-blockquote:pr-6 prose-blockquote:border-r-2 prose-blockquote:border-gray-300 prose-blockquote:border-l-0",
                         "prose-a:text-primary-600 prose-a:font-bold hover:prose-a:text-primary-900",
                         "prose-img:rounded-xl",
@@ -62,7 +62,7 @@ const page = () => {
                 {/* === article === */}
                 <div className="md:col-span-2 space-y-6">
                     <LastPost />
-                    <CardAcademyLayout title='دسته بندی'>
+                    <CardAcademyLayout title='دسته بندی' className="pb-0">
                         <AcademyCategories />
                     </CardAcademyLayout>
                 </div>

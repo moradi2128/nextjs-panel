@@ -17,7 +17,7 @@ const ProductPrice = ({ product }) => {
                     </p>
                     {!!discount && (
                         <div className=' relative mb-5'>
-                            <p className='text-xl font-bold text-gray-700'>قیمت با تخفیف : {toPersianNumberWithComma(offPrice)} تومان</p>
+                            <p className='text-xl font-bold text-gray-700 dark:text-gray-300'>قیمت با تخفیف : {toPersianNumberWithComma(offPrice)} تومان</p>
                             <div className='absolute left-0 -top-[25px] bg-rose-500 px-2 py-0.5 rounded-xl text-white text-sm'>
                                 {toPersianNumberWithComma(discount)} %
                             </div>

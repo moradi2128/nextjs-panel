@@ -1,11 +1,9 @@
 "use client"
 
 import LinkSectionLayout from "@/components/LinkSectionLayout"
-import SideBar from "@/components/SideBar"
 import { useGetUser } from "@/hooks/useAuth"
 import { toLocalDateStringShort } from "@/utils/toLocalDate"
-import { Bars3Icon } from "@heroicons/react/24/outline"
-import SectionLayout from "../../../Layout/SectionLayout"
+import SectionLayout from "@/Layout/SectionLayout"
 import PaymentTable from "./payments/PaymentTable"
 
 const Profile = () => {
