@@ -18,7 +18,8 @@
 4. add Coupon Code in paymnet 
 
 ## A Landing page made with Nextjs
-
+- react query
+  
 - tailwindcss
 
 - daisyui
@@ -26,6 +27,7 @@
 - axios
 
 - swiperjs
+  
 - chartjs 
 
  ##  Getting Started 
