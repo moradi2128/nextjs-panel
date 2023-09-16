@@ -5,7 +5,7 @@ import { toPersianNumberWithComma } from '@/utils/toPersianNumber'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import React from 'react'
-import AdminCardLayout from '../../../Layout/AdminCardLayout'
+import AdminCardLayout from '@/Layout/AdminCardLayout'
 
 const ResentSales = ({ data }) => {
     return (
@@ -42,8 +42,8 @@ const ResentSalesItem = ({ content }) => {
                 </div>
             </div>
             <div>
-                <h4 className="font-bold ">{name}</h4>
-                <p>{toLocalDateString(date)}</p>
+                <h4 className="font-bold  dark:text-gray-400">{name}</h4>
+                <p className="text-xs text-gray-400 dark:text-gray-500">{toLocalDateString(date)}</p>
             </div>
         </div>
         <p className="font-bold text-green-500">{toPersianNumberWithComma(price) + " تومان"}</p>

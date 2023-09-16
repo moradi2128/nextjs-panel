@@ -16,9 +16,9 @@ const CheckBox = ({
                 checked={checked}
                 value={value}
                 onChange={onChange}
-                className="checkbox checkbox-primary checkbox-sm accent-primary-900"
+                className="checkbox checkbox-primary checkbox-sm accent-primary-900 dark:accent-primary-600"
             />
-            <label htmlFor={id} className="cursor-pointer mx-2 font-bold">{label}</label>
+            <label htmlFor={id} className="cursor-pointer mx-2 font-bold dark:text-slate-300">{label}</label>
         </div>
     )
 }

@@ -13,7 +13,7 @@ const iconStyle = "w-4 h-4  text-secondary-600";
 const CartItem = ({ content, readOnly = false }) => {
     var { title, quantity, discount, price, offPrice, _id, slug } = content;
     return (
-        <div className='flex flex-col md:flex-row items-center justify-between gap-3 rounded-xl p-4 shadow-card'>
+        <div className='flex flex-col md:flex-row items-center justify-between gap-3 rounded-xl p-4 shadow-card '>
             {/* {imageLink && <figure><Image src={imageLink} width={200} height={100} alt={title} /></figure>} */}
             <Link
                 href={`/products/${slug}`}
@@ -34,7 +34,7 @@ const CartItem = ({ content, readOnly = false }) => {
                         <s className='font-bold text-gray-400 text-lg'>{toPersianNumberWithComma(price)}</s>
                         <span className='badge badge__error mr-3'>% {PersianNumbers(discount)}</span>
                     </div>}
-                    <span className='font-bold text-gray-800 text-xl'>{toPersianNumberWithComma(offPrice)} تومان</span>
+                    <span className='font-bold text-gray-800 dark:text-slate-300 text-xl'>{toPersianNumberWithComma(offPrice)} تومان</span>
                 </div>
                 {readOnly ?
                     <span className='font-bold'>تعداد : {PersianNumbers(quantity) + "×"}</span>

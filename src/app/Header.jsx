@@ -4,7 +4,23 @@ import Link from 'next/link'
 // === Common ===
 import IconButton from '@/common/IconButton'
 // === icons ===
-import { AcademicCapIcon, ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon, Bars3Icon, BuildingStorefrontIcon, ChevronDownIcon, CubeTransparentIcon, EnvelopeIcon, HomeIcon, IdentificationIcon, PencilSquareIcon, PhotoIcon, ShoppingBagIcon, UserCircleIcon, UserIcon } from '@heroicons/react/24/outline'
+import {
+    AcademicCapIcon,
+    ArrowLeftOnRectangleIcon,
+    ArrowRightOnRectangleIcon,
+    Bars3Icon,
+    BuildingStorefrontIcon,
+    ChevronDownIcon,
+    CubeTransparentIcon,
+    EnvelopeIcon,
+    HomeIcon,
+    IdentificationIcon,
+    PencilSquareIcon,
+    PhotoIcon,
+    UserCircleIcon,
+    UserIcon
+} from '@heroicons/react/24/outline'
+import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 // === services ===
 import { useGetUser } from '@/hooks/useAuth'
 import { logoutHandler } from '@/utils/logoutHandler'
@@ -13,6 +29,7 @@ import Logo from '@/components/Logo'
 import avatarImg from "../../public/assets/images/avatar.jpg"
 import { PersianNumbers, toPersianNumberWithComma } from '@/utils/toPersianNumber'
 import { usePathname } from 'next/navigation'
+import ToggleThemeMode from '@/components/ToggleThemeMode'
 
 const Header = () => {
     const pathname = usePathname()
@@ -59,7 +76,8 @@ const Header = () => {
     ]
     const { data, isLoading } = useGetUser()
     return (
-        <header className={`bg-white sticky top-0 transition-all duration-200  mb-10 min-h-[60px] z-[9999] flex items-center justify-center ${isLoading ? "blur-md opacity-30" : "blur-0 opacity-100"}`}>
+        <header className={`sticky top-0 z-30 flex min-h-[60px] w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100  bg-base-100 text-base-content shadow-sm
+         ${isLoading ? "blur-md opacity-30" : "blur-0 opacity-100"}`}>
             <nav className='py-2 container xl:max-w-screen-xl flex items-center justify-between'>
                 {/* === Drawer Menu : Mobile ===  */}
                 <div className="drawer lg:hidden flex-1">
@@ -72,7 +90,7 @@ const Header = () => {
                     </div>
                     <div className="drawer-side z-10">
                         <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-                        <ul className='menu p-7 w-80 h-full bg-white text-base-content'>
+                        <ul className='menu p-7 w-80 h-full bg-white dark:bg-slate-700 text-base-content'>
                             {
                                 (navData || []).map((menuItem) => {
                                     return <MenuItem key={menuItem.id} menuItem={menuItem} activeSegment={pathname} />
@@ -97,6 +115,8 @@ const Header = () => {
 
                 {/* === Login section === */}
                 <div className='flex items-center gap-3'>
+                    {/*  === toggle Theme mode === */}
+                    <ToggleThemeMode />
 
                     {
                         data ?
@@ -107,7 +127,7 @@ const Header = () => {
                                         badgeNumber={data && data?.cart?.productDetail.length}
                                         className={`${pathname === "/cart" ? "border-primary-500" : ""}`}
                                     >
-                                        <ShoppingBagIcon className="w-5 h-5 text-slate-500" />
+                                        <ShoppingBagIcon className="w-5 h-5 text-[#ff4c83] " />
                                     </IconButton>
                                 </Link>
                                 {/* <div className="dropdown dropdown-bottom">
@@ -135,10 +155,10 @@ const Header = () => {
                                 {/* === User menus === */}
                                 <div className="dropdown dropdown-bottom">
                                     <IconButton className="px-3" tabIndex={0} >
-                                        <UserIcon className="w-5 h-5 text-slate-500" />
-                                        <ChevronDownIcon className='w-3 h-3 text-slate-500' />
+                                        <UserIcon className="w-5 h-5 text-slate-500 dark:text-slate-300" />
+                                        <ChevronDownIcon className='w-3 h-3 text-slate-500 dark:text-slate-300' />
                                     </IconButton>
-                                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow-light rounded-box w-64 bg-white mt-2 -mr-[192px]">
+                                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow-light rounded-box w-64 bg-dropdown-content  mt-2 -mr-[192px]">
                                         <li >
                                             <Link href="/profile/me" className='flex flex-row pr-2'>
                                                 <div className="avatar p-1">
@@ -148,9 +168,9 @@ const Header = () => {
                                                     </div>
                                                 </div>
                                                 <div className='block flex-1'>
-                                                    <h3 className='text-slate-700 text-lg font-bold mb-2'>{data.user.name}</h3>
+                                                    <h3 className='text-slate-700 dark:text-slate-300 text-lg font-bold mb-2'>{data.user.name}</h3>
                                                     <div className="flex flex-row justify-between items-center">
-                                                        <span className='text-slate-500 font-bold'>{data.user.phoneNumber}</span>
+                                                        <span className='text-slate-500 dark:text-slate-400 font-bold'>{data.user.phoneNumber}</span>
                                                         <PencilSquareIcon className='text-slate-500 w-4 h-4' />
                                                     </div>
                                                 </div>
@@ -193,10 +213,13 @@ export default Header
 
 const MenuItem = ({ menuItem, activeSegment }) => {
     return <li >
-        <Link className={`block py-4 text-[16px] font-bold text-gray-500 hover:text-primary-900 transition-all duration-200
-         ${activeSegment === menuItem.href ? "text-primary-800" : ""}`}
+        <Link className={`block py-4 text-[15px] font-bold transition-all duration-200
+         ${activeSegment === menuItem.href ?
+                "text-primary-800 dark:text-primary-700" :
+                "text-slate-500 dark:text-slate-200 hover:text-primary-900"
+            }`}
             href={menuItem.href}>
-            <menuItem.Icon className="w-6 h-6 ml-2 inline" />
+            <menuItem.Icon className="w-5 h-w-5 ml-2 inline" />
             {menuItem.title}
         </Link>
     </li>

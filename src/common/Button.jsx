@@ -79,7 +79,7 @@ const Button = React.forwardRef(
         )}
         {...rest}
       >
-        {isLoading && (
+        {isLoading ? (
           <div
             className={clsxm(
               'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
@@ -92,44 +92,48 @@ const Button = React.forwardRef(
           >
             <Loading color="#fff" />
           </div>
-        )}
-        {LeftIcon && (
-          <div
-            className={clsxm([
-              size === 'base' && 'mr-1',
-              size === 'sm' && 'mr-1.5',
-            ])}
-          >
-            <LeftIcon
-              className={clsxm(
-                [
-                  size === 'base' && 'md:text-md text-md',
-                  size === 'sm' && 'md:text-md text-sm',
-                ],
-                leftIconClassName
-              )}
-            />
-          </div>
-        )}
-        {children}
-        {RightIcon && (
-          <div
-            className={clsxm([
-              size === 'base' && 'ml-1',
-              size === 'sm' && 'ml-1.5',
-            ])}
-          >
-            <RightIcon
-              className={clsxm(
-                [
-                  size === 'base' && 'text-md md:text-md',
-                  size === 'sm' && 'md:text-md text-sm',
-                ],
-                rightIconClassName
-              )}
-            />
-          </div>
-        )}
+        )
+          :
+          <>
+            {LeftIcon && (
+              <div
+                className={clsxm([
+                  size === 'base' && 'mr-1',
+                  size === 'sm' && 'mr-1.5',
+                ])}
+              >
+                <LeftIcon
+                  className={clsxm(
+                    [
+                      size === 'base' && 'md:text-md text-md',
+                      size === 'sm' && 'md:text-md text-sm',
+                    ],
+                    leftIconClassName
+                  )}
+                />
+              </div>
+            )}
+            {children}
+            {RightIcon && (
+              <div
+                className={clsxm([
+                  size === 'base' && 'ml-1',
+                  size === 'sm' && 'ml-1.5',
+                ])}
+              >
+                <RightIcon
+                  className={clsxm(
+                    [
+                      size === 'base' && 'text-md md:text-md',
+                      size === 'sm' && 'md:text-md text-sm',
+                    ],
+                    rightIconClassName
+                  )}
+                />
+              </div>
+            )}
+          </>
+        }
       </button>
     );
   }

@@ -5,7 +5,7 @@ import React from 'react'
 
 
 const RenderDate = (props) => {
-    return <span className={`text-gray-400 text-[.6rem] whitespace-nowrap ${props.light ? "text-gray-100" : "text-gray-500"}`}>{toLocalDateString(props.date)}</span>
+    return <span className={`text-gray-400 text-[.6rem] whitespace-nowrap ${props.light ? "text-gray-100" : "text-gray-500 dark:text-gray-400"}`}>{toLocalDateString(props.date)}</span>
 }
 
 const InfoAvatar = (props) => {
@@ -23,7 +23,7 @@ const InfoAvatar = (props) => {
                 </div>
             </div>
             <div className="flex flex-col justify-around">
-                <h3 className={`text-[0.8rem]  font-semibold whitespace-nowrap ${light ? "text-gray-100 " : "text-gray-500"}`}>{name}</h3>
+                <h3 className={`text-[0.8rem]  font-semibold whitespace-nowrap ${light ? "text-gray-100 " : "text-gray-500 dark:text-gray-300"}`}>{name}</h3>
                 {date && <RenderDate date={date} light={light} />}
             </div>
         </div>

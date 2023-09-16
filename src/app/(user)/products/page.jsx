@@ -7,7 +7,7 @@ import queryString from "query-string"
 import { cookies } from 'next/headers';
 import { toStringCookies } from '@/utils/toStringCookies'
 
-import SectionLayout from '../../../Layout/SectionLayout'
+import SectionLayout from '@/Layout/SectionLayout'
 import CardProduct from '@/components/Cards/CardProduct'
 export const dynamic = "force-dynamic" // eq to {cache:"no-store"} or SSR in pages Dir
 

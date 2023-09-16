@@ -42,7 +42,7 @@ const Counter = ({ quantity, plusHandler, minusHandler, productId }) => {
         }
     }
     return (
-        <div className='flex gap-2 items-center bg-gray-100 rounded-[50px] h-[50px] shadow-light '>
+        <div className='flex gap-2 items-center bg-gray-100 dark:bg-slate-900 rounded-[50px] h-[50px] shadow-light '>
             {/* === plusHandler === */}
             <span
                 className={`${iconContainerStyle}`}

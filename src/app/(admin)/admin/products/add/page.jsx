@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import FormAddAndEdit from "@/components/FormAddAndEdit"
 import { creteObjectWithValue } from "@/utils/creteObjectWithValue"
-import SectionLayout from "../../../../../Layout/SectionLayout"
+import SectionLayout from "@/Layout/SectionLayout"
 export const productTextField = [
     { id: 1, label: "عنوان", name: "title" },
     { id: 2, label: "توضیحات", name: "description" },

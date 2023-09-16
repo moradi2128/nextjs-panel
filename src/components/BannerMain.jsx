@@ -12,9 +12,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
-import { EffectFade, Navigation } from 'swiper/modules';
+import 'swiper/css/navigation';
+import { EffectFade, Navigation, Autoplay } from 'swiper/modules';
 import { PlayCircleIcon } from '@heroicons/react/24/outline';
 import Button from "@/common/Button";
 import shape from "../../public/assets/images/shape.png"
@@ -67,11 +67,15 @@ const dataTest = [
 ]
 const BannerMain = () => {
     return (
-        <div>
+        <section className="text-3xl">
             <Swiper
                 navigation={true}
+                // autoplay={{
+                //     delay: 2500,
+                //     disableOnInteraction: false,
+                // }}
                 effect={'fade'}
-                modules={[Navigation, EffectFade]}
+                modules={[EffectFade, Navigation]}
                 className="main-slider"
             >
                 {(dataTest || []).map((item) => {
@@ -82,7 +86,7 @@ const BannerMain = () => {
                 })}
 
             </Swiper>
-        </div>
+        </section>
     )
 }
 const SliderItem = ({ content }) => {
@@ -91,17 +95,18 @@ const SliderItem = ({ content }) => {
         mainTitle,
         img, btn: btns } = content
 
-    return <div className="min-h-[100vh] bg-white grid gird-cols-1 md:grid-cols-2 gap-2 container ">
+    return <div className="bg-white dark:bg-base-100 min-h-[90vh] grid gird-cols-1 md:grid-cols-2 gap-2 container ">
         {/* === Right section */}
-        <div className="flex flex-col justify-center gap-7 text-gray-700 order-2 md:order-1">
+        <div className="flex flex-col justify-center gap-7 text-gray-700 dark:text-slate-200 order-2 md:order-1">
             <h4 className="font-extralight text-2xl md:text-5xl mb-3">{title}</h4>
             <h3 className="font-semibold text-3xl md:text-6xl mb-3">{subTitle}</h3>
             <h4 className="font-bold text-4xl md:text-7xl mb-3">{mainTitle}</h4>
             {/* === btn === */}
             <div className="flex items-center gap-3 mt-3">
                 {(btns || []).map((btn) => {
-                    const { Icon, variant, label } = btn
+                    const { Icon, variant, label, id } = btn
                     return <Button
+                        key={id}
                         size="base"
                         variant={variant}
                     >
@@ -122,9 +127,3 @@ const SliderItem = ({ content }) => {
 
 }
 export default BannerMain
-
-//  <Cover>
-//         <div className="text-center text-gray-600">
-//           پروژه فروشگاهی
-//         </div>
-//       </Cover>
