@@ -1,9 +1,7 @@
 import Footer from "@/components/Footer";
-import vazirFont from "@/constants/localFonts";
-import { Toaster } from "react-hot-toast";
+import ThemeProvider from "@/Layout/ThemeProvider";
 import "../globals.css";
 import Header from "../Header";
-import Providers from "../Providers";
 
 export const metadata = {
   title: "Next Shop Panel",
@@ -12,21 +10,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
-      <body
-        suppressHydrationWarning={true}
-        className={`${vazirFont.variable} font-sans`}>
-        <Providers>
-          <Toaster />
-          {/* === Header === */}
-          <Header />
-          {/* === body === */}
-          <div>
-            {children}
-          </div>
-          <Footer />
-        </Providers>
-      </body>
-    </html>
+    <ThemeProvider>
+      {/* === Header === */}
+      <Header />
+      {/* === body === */}
+      <main>
+        {children}
+      </main>
+      <Footer />
+    </ThemeProvider >
   );
 }

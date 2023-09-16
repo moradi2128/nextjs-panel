@@ -2,7 +2,6 @@
 import Loading from '@/common/Loading'
 import { useGetUser } from '@/hooks/useAuth'
 import React from 'react'
-import SectionLayout from '../../../../Layout/SectionLayout'
 import PaymentTable from './PaymentTable'
 
 const page = () => {

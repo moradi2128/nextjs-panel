@@ -19,8 +19,8 @@ const IconButton = React.forwardRef((props
     const { children, className, onClick, badge = false, badgeNumber = null } = props
     return (
         <button
-            className={clsxm(`relative min-w-[50px] min-h-[50px] cursor-pointer  rounded-2xl flex justify-center items-center border border-slate-100 shadow-lg
-            hover:bg-slate-50 transition-all duration-200 hover:scale-105
+            className={clsxm(`relative min-w-[50px] min-h-[50px] cursor-pointer  rounded-2xl flex justify-center items-center border border-slate-100 dark:border-slate-700 shadow-lg
+            hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200 hover:scale-105
             `, className)}
             onClick={onClick}
         >

@@ -5,7 +5,7 @@ const TextField = React.forwardRef((props, ref) => {
     const { type = "text", label, name, value, onChange, placeholder = "", onFocus, readOnly, className,containerStyle, errorMessage, onBlur } = props
     return (
         <div className={containerStyle}>
-            {label && <label htmlFor={name} className="label text-slate-500">{label}</label>}
+            {label && <label htmlFor={name} className="label text-slate-500 text-sm">{label}</label>}
             <input
                 autoComplete='off'
                 name={name}

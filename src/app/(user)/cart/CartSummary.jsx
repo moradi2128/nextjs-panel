@@ -25,13 +25,13 @@ const CartSummary = ({ payDetail, readOnly }) => {
 
     const totalItemStyle = "flex items-center justify-between"
     return (
-        <div className='border p-6 rounded-xl space-y-5 sticky top-[90px] shadow-card'>
-            <h2 className='font-bold text-lg border-b pb-4 mb-2'>
+        <div className='border dark:border-gray-600 p-6 rounded-xl space-y-5 sticky top-[90px] shadow-card'>
+            <h2 className='font-bold text-lg border-b border-gray-600  pb-4 mb-2'>
                 <CreditCardIcon className="w-5 h-5 inline ml-2" />
                 اطلاعات پرداخت
 
             </h2>
-            {!readOnly && <form className='flex flex-row  gap-2 border-b' >
+            {!readOnly && <form className='flex flex-row  gap-2 border-b border-gray-600 ' >
                 <TextField
                     value=""
                     placeholder="کد تخفیف"

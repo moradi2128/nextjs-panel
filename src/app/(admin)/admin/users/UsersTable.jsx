@@ -36,7 +36,7 @@ const UsersTable = ({ users }) => {
                                     return <div key={product._id}>{product.title}</div>
                                 })}</td>
                             <td className="_td">
-                                <Link href={`/admin/users/${user._id}`}>مشاهده جزئیات</Link>
+                                <Link href={`/admin/users/${user._id}`} className="dark:text-gray-300">مشاهده جزئیات</Link>
                             </td>
                         </tr>
                     )

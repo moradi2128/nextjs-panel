@@ -20,11 +20,11 @@ const CategoryItem = ({ content, index }) => {
   const { label, href } = content
   return <li
     className={clsxm(
-      "mb-2 border-b border-gray-200 ",
+      "mb-2 border-b border-gray-200 dark:border-gray-600 ",
       "last:border-b-0 last:mb-2",
       "hover:text-primary-500 transition-all duration-300")
     } >
-    <Link href={`/categories/${href}`} className="block px-2 py-3 ">
+    <Link href={`/categories/${href}`} className="block px-2 py-3 text-sm">
       {(index + 1).toString().padStart(2, 0) + "  "}
       {label}
     </Link>

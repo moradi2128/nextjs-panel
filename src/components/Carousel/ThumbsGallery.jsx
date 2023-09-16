@@ -23,10 +23,10 @@ const ThumbsGallery = ({ data }) => {
                 navigation={true}
                 thumbs={{ swiper: thumbsSwiper }}
                 modules={[FreeMode, Navigation, Thumbs]}
-                className="thumb-gallery"
+                className="thumb-gallery mb-2"
             >
                 {data.map((img) => {
-                    return <SwiperSlide>
+                    return <SwiperSlide className="rounded-lg">
                         <Image src={img.img} />
                     </SwiperSlide>
                 })}

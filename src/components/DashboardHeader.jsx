@@ -12,6 +12,7 @@ import Link from 'next/link'
 import React from 'react'
 import avatarImg from "../../public/assets/images/avatar.jpg"
 import PanelAdminHeaderSkeleton from './Skeleton/PanelAdminHeaderSkeleton'
+import ToggleThemeMode from './ToggleThemeMode'
 const DashboardHeader = ({ title }) => {
     const { data, isLoading } = useGetUser()
     const notiData = [
@@ -55,21 +56,24 @@ const DashboardHeader = ({ title }) => {
         <div className='mb-6 flex flex-row justify-between '>
             {/* === right section === */}
             <div>
-                <h2 className='text-slate-700 text-2xl font-bold mb-2'>{title}</h2>
-                <span className="text-slate-500">{toLocalDateString(new Date())}</span>
+                <h2 className='text-slate-700 dark:text-slate-300 text-2xl font-bold mb-2'>{title}</h2>
+                <span className="text-slate-500 dark:text-slate-400">{toLocalDateString(new Date())}</span>
             </div>
             {/* === left section === */}
-            <div className='flex flex-row gap-4'>
+            <div className='flex flex-row gap-4 items-center'>
+                {/* === Toggle Theme === */}
+                <ToggleThemeMode />
+                {/* === Notification ===  */}
                 <div className="dropdown dropdown-bottom">
                     <IconButton
                         tabIndex={0}
                         badgeNumber={5}
                         className={`w-[35px] h-[35px]`}
                     >
-                        <BellIcon className="w-5 h-5 text-slate-500" />
+                        <BellIcon className="w-5 h-5 text-gray-900 dark:text-gray-300" />
                     </IconButton>
-                    <ul tabIndex={0} className="dropdown-content menu z-[9999] p-4 shadow-light rounded-box w-[26rem] md:w-[30rem] bg-white mt-2 -mr-[355px] md:-mr-[420px]">
-                        <h3 className='font-bold text-slate-700 text-xl mb-5 mt-2'>پیام ها</h3>
+                    <ul tabIndex={0} className="dropdown-content menu z-[9999] p-4 shadow-light rounded-box w-[26rem] md:w-[30rem] bg-dropdown-content mt-2 -mr-[355px] md:-mr-[420px]">
+                        <h3 className='font-bold text-slate-700 dark:text-slate-300 text-xl mb-5 mt-2'>پیام ها</h3>
                         {
                             notiData.slice(0, 3).map((notification) => {
                                 return <NotificationItem key={notification.id} content={notification} />
@@ -88,6 +92,7 @@ const DashboardHeader = ({ title }) => {
 
                     </ul>
                 </div>
+                {/* === User dropdown === */}
                 <div className="dropdown dropdown-bottom">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar p-1 rounded-full">
                         <div className="w-20 rounded-full">
@@ -95,11 +100,11 @@ const DashboardHeader = ({ title }) => {
                             <Image src={avatarImg} alt={data?.user.name} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="dropdown-content menu menu z-[9999] p-2 shadow-light rounded-box w-64 bg-white mt-2 -mr-[192px]">
+                    <ul tabIndex={0} className="dropdown-content menu z-[9999] p-2 shadow-light rounded-box w-64 bg-dropdown-content mt-2 -mr-[192px]">
                         <li >
                             <Link href="/profile/me" className='flex flex-row pr-2'>
                                 <div className='block flex-1'>
-                                    <h3 className='text-slate-700 text-lg font-bold mb-2'>{data.user.name}</h3>
+                                    <h3 className='text-slate-700 dark:text-gray-300 text-lg font-bold mb-2'>{data.user.name}</h3>
                                     <div className="flex flex-row justify-between items-center">
                                         <span className='text-slate-500 font-bold'>{data.user.phoneNumber}</span>
                                         <PencilSquareIcon className='text-slate-500 w-4 h-4' />

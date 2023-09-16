@@ -1,7 +1,7 @@
 
 import SideBar from "@/components/SideBar";
-import vazirFont from "@/constants/localFonts";
-import { Toaster } from "react-hot-toast";
+import DashboardContainer from "@/Layout/DashboardContainer";
+import ThemeProvider from "@/Layout/ThemeProvider";
 import "../globals.css";
 import Providers from "../Providers";
 
@@ -12,18 +12,13 @@ export const metadata = {
 };
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
-      <body
-        suppressHydrationWarning={true}
-        className={`${vazirFont.variable} font-sans`}>
-        <Providers>
-          <Toaster />
+    <ThemeProvider>
+      <Providers>
+        <DashboardContainer>
           {/* === body === */}
-          <div className="block bg-primary-100/30 h-screen">
-            <SideBar >{children}</SideBar>
-          </div>
-        </Providers>
-      </body>
-    </html>
+          <SideBar >{children}</SideBar>
+        </DashboardContainer>
+      </Providers>
+    </ThemeProvider>
   );
 }

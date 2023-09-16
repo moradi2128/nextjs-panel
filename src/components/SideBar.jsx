@@ -1,5 +1,5 @@
 "use client"
-import { logoutHandler } from '@/utils/logoutHandler'
+
 import Link from 'next/link'
 import React, { useState } from 'react'
 import {
@@ -21,8 +21,7 @@ import {
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import Logo from './Logo'
-import DashboardHeader from './DashboardHeader';
-const sideBarUser = [
+import DashboardHeader from './DashboardHeader';const sideBarUser = [
     {
         id: 0,
         title: "",
@@ -175,7 +174,7 @@ const SideBar = ({ adminPage = false, children }) => {
             </li>
         }
         return <li key={content.id}
-            className={clsx(`${pathname === content?.href ? "bg-primary-900 text-white  shadow-lg shadow-primary-500" : "hover:bg-primary-100 text-secondary-500"}`,
+            className={clsx(`${pathname === content?.href ? "bg-primary-900 text-white  shadow-lg shadow-primary-500 dark:shadow-black/30" : "hover:bg-primary-100 dark:hover:bg-slate-900 text-secondary-500 dark:date-slate-300"}`,
                 "transition-all duration-100 rounded-xl "
             )}
         >
@@ -187,7 +186,7 @@ const SideBar = ({ adminPage = false, children }) => {
     const MenuItem = ({ content }) => {
         const { title, children: _menuChild } = content
         return <li className="mt-7">
-            <span className="text-secondary-500 font-bold mb-3">{title}</span>
+            <span className="text-secondary-500 dark:text-gray-300 font-bold mb-3">{title}</span>
             <ul className='flex flex-col space-y-2 mt-1'>
                 {_menuChild?.map((item) => {
                     return <MenuItemChildren key={item.id} content={item} />
@@ -196,7 +195,7 @@ const SideBar = ({ adminPage = false, children }) => {
         </li>
     }
     return (
-        <div className="block lg:grid grid-cols-5 bg-primary-100/30 h-screen">
+        <div className="block lg:grid grid-cols-5 h-screen">
             <div className="col-span-5 lg:col-span-1  overflow-y-auto lg:p-4 rounded-tl-[30px] rounded-bl-[30px] p-4 pl-2">
                 <div className="hidden lg:block">
                     <Logo className="block text-center" />
@@ -215,10 +214,10 @@ const SideBar = ({ adminPage = false, children }) => {
                     </div>
                     <div className="drawer-side z-10">
                         <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-                        <ul className='overflow-y-auto p-7 w-full max-w-[320px] h-full bg-white text-base-content space-y-2'>
+                        <ul className='overflow-y-auto p-7 w-full max-w-[320px] h-full bg-white dark:bg-slate-900 text-base-content space-y-2'>
                             <div className="w-full flex justify-between items-center">
                                 <Logo />
-                                <label htmlFor="my-drawer-4" className="drawer-overlay bg-wh shadow-xl rounded-xl cursor-pointer p-3"><XMarkIcon className='w-5 h-5' /></label>
+                                <label htmlFor="my-drawer-4" className="drawer-overlay bg-white dark:bg-slate-800 shadow-xl rounded-xl cursor-pointer p-3"><XMarkIcon className='w-5 h-5' /></label>
                             </div>
                             {
                                 (adminPage ? sideBarAdmin : sideBarUser).map((menuItem) => {
@@ -230,7 +229,7 @@ const SideBar = ({ adminPage = false, children }) => {
                 </div>
             </div>
             <div className="col-span-5 lg:col-span-4 overflow-y-auto p-4 ">
-                <div className='min-h-full bg-white rounded-3xl p-6'>
+                <div className='min-h-full bg-white dark:bg-slate-800 rounded-3xl p-6'>
                     <DashboardHeader title={titlePage} />
                     {children}
                 </div>
