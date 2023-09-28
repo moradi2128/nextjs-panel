@@ -3,7 +3,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import avatarImg from "../../public/assets/images/avatar.jpg"
+import avatarImg from "@/public/assets/images/avatar.jpg"
 const UserCardItem = ({ user, callback, readOnly = false }) => {
 
     const RenderText = ({ text }) => {

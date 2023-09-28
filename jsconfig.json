@@ -5,12 +5,13 @@
       "@/components/*": ["./src/components/*"],
       "@/constants/*": ["./src/constants/*"],
       "@/common/*": ["./src/common/*"],
-      "@/pages/*": ["./src/app/*"],
+      "@/pages/*": ["./src/app/[locale]/*"],
       "@/services/*": ["./src/services/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/lib/*": ["./src/lib/*"],
+      "@/public/*": ["./public/*"],
       "@/Layout/*": ["./src/Layout/*"],
-      "@/public/*": ["./public/*"]
+      "@/i18n/*": ["./src/i18n/*"],
     }
   }
 }

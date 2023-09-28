@@ -1,16 +1,17 @@
+"use client"
 import vazirFont from '@/constants/localFonts'
-import Providers from '@/pages/Providers'
-import React from 'react'
+import ReactQueryProviders from '../app/ReactQueryProviders'
+
 
 const ThemeProvider = ({ children }) => {
     return (
-        <html lang="fa" dir="rtl">
+        <html >
             <body
                 suppressHydrationWarning={true}
                 className={`${vazirFont.variable} font-sans`}>
-                <Providers>
+                <ReactQueryProviders>
                     {children}
-                </Providers>
+                </ReactQueryProviders>
             </body>
         </html>
     )

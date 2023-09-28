@@ -1,0 +1,11 @@
+{
+  "dashboard": {
+    "salesAnalytics": "آنالیز فروش",
+    "lastSales":"آخرین فروش",
+     "lastPayment":"آخرین فاکتور ها"
+  },
+  "analytics":{
+    "incomeCalculation":"محاسبه درآمد",
+    "popularProducts":"محصولات محبوب"
+  }
+}

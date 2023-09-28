@@ -1,11 +1,10 @@
 "use client"
 
 // === Image ===
-import img1 from "../../public/assets/images/slider/slider1.png"
-import img2 from "../../public/assets/images/slider/slider2.png"
+import img1 from "@/public/assets/images/slider/slider1.png"
+import img2 from "@/public/assets/images/slider/slider2.png"
 
 
-import React, { useRef, useState } from 'react';
 import Image from "next/image";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,7 +16,7 @@ import 'swiper/css/navigation';
 import { EffectFade, Navigation, Autoplay } from 'swiper/modules';
 import { PlayCircleIcon } from '@heroicons/react/24/outline';
 import Button from "@/common/Button";
-import shape from "../../public/assets/images/shape.png"
+import shape from "@/public/assets/images/shape.png"
 // import './styles.css';
 const dataTest = [
     {
@@ -70,12 +69,12 @@ const BannerMain = () => {
         <section className="text-3xl">
             <Swiper
                 navigation={true}
-                // autoplay={{
-                //     delay: 2500,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
                 effect={'fade'}
-                modules={[EffectFade, Navigation]}
+                modules={[EffectFade, Navigation, Autoplay]}
                 className="main-slider"
             >
                 {(dataTest || []).map((item) => {

@@ -1,0 +1,31 @@
+{
+  "menu": {
+    "home": "صفحه نخست",
+    "products": "محصولات",
+    "academy": "مقالات",
+    "contactUs": "تماس با ما",
+    "userPanel": "پنل کاربر",
+    "adminPanel": "پنل ادمین",
+    "logout": "خروج از حساب کاربری",
+    "login": "ورود"
+  },
+  "menuDashboard": {
+    "mainPage": "صفحه اصلی",
+    "dashboard": "داشبورد",
+    "analytics": "آنالیز",
+    "sales": "فروش",
+    "users": "کاربران",
+    "payments": "سفارشات",
+    "products": "محصولات",
+    "categories": "دسته بندی",
+    "coupons": "کد تخفیف",
+    "account": "حساب کاربری",
+    "profilePanel": "پنل کاربری",
+    "userInformation": "اطلاعات کاربری"
+  },
+  "notification":{
+    "notification": "پیام ها",
+    "seenAll":"مشاهده همه پیام ها",
+    "markAll":"تغییر وضعیت پیام ها به خوانده شده"
+  }
+}

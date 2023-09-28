@@ -10,11 +10,18 @@ import { ArrowRightOnRectangleIcon, BellIcon, CheckIcon, PencilSquareIcon } from
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import avatarImg from "../../public/assets/images/avatar.jpg"
+import avatarImg from "@/public/assets/images/avatar.jpg"
 import PanelAdminHeaderSkeleton from './Skeleton/PanelAdminHeaderSkeleton'
 import ToggleThemeMode from './ToggleThemeMode'
+import { useTranslation } from '@/i18n/client'
+import { useParams } from 'next/navigation'
+import Dropdown from '@/common/Dropdown/Dropdown'
+import DropdownContent from '@/common/Dropdown/DropdownContent'
+import ChangeLocale from './ChangeLocale'
 const DashboardHeader = ({ title }) => {
-    const { data, isLoading } = useGetUser()
+    const { data, isLoading } = useGetUser();
+    const locale = useParams()?.locale;
+    const { t, i18n } = useTranslation(locale, 'common');
     const notiData = [
         {
             id: 0,
@@ -63,8 +70,10 @@ const DashboardHeader = ({ title }) => {
             <div className='flex flex-row gap-4 items-center'>
                 {/* === Toggle Theme === */}
                 <ToggleThemeMode />
+                {/* === Change Language === */}
+                <ChangeLocale />
                 {/* === Notification ===  */}
-                <div className="dropdown dropdown-bottom">
+                <Dropdown>
                     <IconButton
                         tabIndex={0}
                         badgeNumber={5}
@@ -72,8 +81,12 @@ const DashboardHeader = ({ title }) => {
                     >
                         <BellIcon className="w-5 h-5 text-gray-900 dark:text-gray-300" />
                     </IconButton>
-                    <ul tabIndex={0} className="dropdown-content menu z-[9999] p-4 shadow-light rounded-box w-[26rem] md:w-[30rem] bg-dropdown-content mt-2 -mr-[355px] md:-mr-[420px]">
-                        <h3 className='font-bold text-slate-700 dark:text-slate-300 text-xl mb-5 mt-2'>پیام ها</h3>
+                    <DropdownContent
+                        tabIndex={0}
+                        dir={i18n.dir()}
+                        className="p-4 w-[26rem] md:w-[30rem]"
+                    >
+                        <h3 className='font-bold text-slate-700 dark:text-slate-300 text-xl mb-5 mt-2'> {t("menu.notification")}</h3>
                         {
                             notiData.slice(0, 3).map((notification) => {
                                 return <NotificationItem key={notification.id} content={notification} />
@@ -82,25 +95,29 @@ const DashboardHeader = ({ title }) => {
                         <span className='divider my-1'></span>
                         <div className="flex justify-between items-center">
                             <Button >
-                                مشاهده همه پیام ها
+                                {t("notification.seenAll")}
                             </Button>
                             <button className="btn btn-ghost text-primary-700">
-                                تغییر وضعیت پیام ها به خوانده شده
+                                {t("notification.markAll")}
                                 <CheckIcon className='w-4 h-4 ' />
                             </button>
                         </div>
 
-                    </ul>
-                </div>
+                    </DropdownContent>
+                </Dropdown>
                 {/* === User dropdown === */}
-                <div className="dropdown dropdown-bottom">
+                <Dropdown>
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar p-1 rounded-full">
                         <div className="w-20 rounded-full">
                             {/* {data.user?.avatarUrl ? <img src={data.user.avatarUrl} /> : <UserCircleIcon className="w-8 h-8 text-slate-500" />} */}
                             <Image src={avatarImg} alt={data?.user.name} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="dropdown-content menu z-[9999] p-2 shadow-light rounded-box w-64 bg-dropdown-content mt-2 -mr-[192px]">
+                    <DropdownContent
+                        tabIndex={0}
+                        dir={i18n.dir()}
+                        className="w-64"
+                    >
                         <li >
                             <Link href="/profile/me" className='flex flex-row pr-2'>
                                 <div className='block flex-1'>
@@ -116,10 +133,11 @@ const DashboardHeader = ({ title }) => {
                         <li>
                             <button type="button" className='w-full py-4 text-[14px] font-bold' onClick={logoutHandler}>
                                 <ArrowRightOnRectangleIcon className='w-5 h-5 text-red-500' />
-                                خروح از حساب کاربری</button>
+                                {t("menu.logout")}
+                            </button>
                         </li>
-                    </ul>
-                </div>
+                    </DropdownContent>
+                </Dropdown>
             </div>
         </div>
     )

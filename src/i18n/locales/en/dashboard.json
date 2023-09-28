@@ -1,0 +1,11 @@
+{
+  "dashboard": {
+    "salesAnalytics": "Sales Analytics",
+    "lastSales": "Last Sales",
+    "lastPayment": "Last Payment"
+  },
+  "analytics": {
+    "incomeCalculation": "Income Calculation",
+    "popularProducts":"Popular Products"
+  }
+}

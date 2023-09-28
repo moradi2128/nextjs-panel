@@ -1,0 +1,32 @@
+{
+  "menu": {
+    "home": "Home",
+    "products": "Products",
+    "academy": "Academy",
+    "contactUs": "Contact Us",
+    "userPanel": "User Panel",
+    "adminPanel": "Admin Panel",
+    "logout": "Log Out",
+    "login": "Login",
+    "notification": "Notification"
+  },
+  "menuDashboard": {
+    "mainPage": "Home Page",
+    "dashboard": "Dashboard",
+    "analytics": "Analytics",
+    "sales": "Sales",
+    "users": "Users",
+    "payments": "Payments",
+    "products": "Products",
+    "categories": "Categories",
+    "coupons": "Coupons",
+    "account": "Account",
+    "profilePanel": "Profile Panel",
+    "userInformation": "User Information"
+  },
+  "notification": {
+    "notification": "Notification",
+    "seenAll": "Seen All",
+    "markAll": "Mark All"
+  }
+}

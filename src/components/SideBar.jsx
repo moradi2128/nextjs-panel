@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import {
-    ArrowRightOnRectangleIcon,
     BanknotesIcon,
     Bars3Icon,
     ChartPieIcon,
@@ -18,29 +17,31 @@ import {
     WalletIcon,
     XMarkIcon
 } from "@heroicons/react/24/outline";
-import { usePathname } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import Logo from './Logo'
-import DashboardHeader from './DashboardHeader';const sideBarUser = [
+import DashboardHeader from './DashboardHeader'; import { useTranslation } from '@/i18n/client';
+
+const sideBarUser = [
     {
         id: 0,
         title: "",
         children: [
             {
                 id: 0,
-                label: "صفحه اصلی",
+                label: "mainPage",
                 href: "/",
                 Icon: HomeIcon
             },
             {
                 id: 1,
-                label: "داشبورد",
+                label: "dashboard",
                 href: "/profile",
                 Icon: Squares2X2Icon
             },
             {
                 id: 2,
-                label: "اطلاعت پرداخت",
+                label: "payments",
                 href: "/profile/payments",
                 Icon: CreditCardIcon
             },
@@ -48,11 +49,11 @@ import DashboardHeader from './DashboardHeader';const sideBarUser = [
     },
     {
         id: 2,
-        title: "حساب کاربری",
+        title: "account",
         children: [
             {
                 id: 1,
-                label: "اطلاعات کاربری",
+                label: "userInformation",
                 href: "/profile/me",
                 Icon: IdentificationIcon
             },
@@ -66,37 +67,37 @@ const sideBarAdmin = [
         children: [
             {
                 id: 0,
-                label: "صفحه اصلی",
+                label: "mainPage",
                 href: "/",
                 Icon: HomeIcon
             },
             {
                 id: 1,
-                label: "داشبورد",
+                label: "dashboard",
                 href: "/admin",
                 Icon: Squares2X2Icon
             },
             {
                 id: 2,
-                label: "آنالیز",
+                label: "analytics",
                 href: "/admin/analytics",
                 Icon: ChartPieIcon
             },
             {
                 id: 3,
-                label: "فروش",
+                label: "sales",
                 href: "/admin/sales",
                 Icon: WalletIcon
             },
             {
                 id: 4,
-                label: "کاربران",
+                label: "users",
                 href: "/admin/users",
                 Icon: UserGroupIcon
             },
             {
                 id: 5,
-                label: "سفارشات",
+                label: "payments",
                 href: "/admin/payments",
                 Icon: CreditCardIcon
             },
@@ -105,23 +106,23 @@ const sideBarAdmin = [
     },
     {
         id: 1,
-        title: "محصولات",
+        title: "products",
         children: [
             {
                 id: 0,
-                label: "محصولات",
+                label: "products",
                 href: "/admin/products",
                 Icon: ShoppingBagIcon
             },
             {
                 id: 1,
-                label: "دسته بندی",
+                label: "categories",
                 href: "/admin/categories",
                 Icon: TagIcon
             },
             {
                 id: 2,
-                label: "کد تخفیف",
+                label: "coupons",
                 href: "/admin/coupons",
                 Icon: BanknotesIcon
             },
@@ -130,17 +131,17 @@ const sideBarAdmin = [
     },
     {
         id: 2,
-        title: "حساب کاربری",
+        title: "account",
         children: [
             {
                 id: 0,
-                label: "پنل کاربری",
+                label: "profilePanel",
                 href: "/profile",
                 Icon: UserIcon
             },
             {
                 id: 1,
-                label: "اطلاعات کاربری",
+                label: "userInformation",
                 href: "/profile/me",
                 Icon: IdentificationIcon
             },
@@ -156,11 +157,15 @@ const sideBarAdmin = [
     // },
 ]
 const SideBar = ({ adminPage = false, children }) => {
+    const locale = useParams()?.locale;
+    const { t } = useTranslation(locale, 'common');
+
     const [titlePage, setTitlePage] = useState()
     const pathname = usePathname()
     const MenuItemChildren = ({ content }) => {
-        if (pathname === content?.href) {
-            setTitlePage(content.label)
+        const href = "/" + locale + content?.href
+        if (pathname === href) {
+            setTitlePage(t(`menuDashboard.${content.label}`))
         }
         if (content.callback) {
             return <li key={content.id}
@@ -169,24 +174,24 @@ const SideBar = ({ adminPage = false, children }) => {
                 )}
             >
                 <button onClick={content.callback} className="block p-4">
-                    {content.Icon && <content.Icon className={clsx("w-5 h-5 inline ml-2", content.iconStyle)} />}
-                    {content.label}</button>
+                    {content.Icon && <content.Icon className={clsx("w-5 h-5 inline mx-2", content.iconStyle)} />}
+                    {t(`menuDashboard.${content.label}`)}</button>
             </li>
         }
         return <li key={content.id}
-            className={clsx(`${pathname === content?.href ? "bg-primary-900 text-white  shadow-lg shadow-primary-500 dark:shadow-black/30" : "hover:bg-primary-100 dark:hover:bg-slate-900 text-secondary-500 dark:date-slate-300"}`,
+            className={clsx(`${pathname === href ? "bg-primary-900 text-white  shadow-lg shadow-primary-500 dark:shadow-black/30" : "hover:bg-primary-100 dark:hover:bg-slate-900 text-secondary-500 dark:date-slate-300"}`,
                 "transition-all duration-100 rounded-xl "
             )}
         >
-            <Link href={content?.href} className="block p-4 text-[15px]">
-                {content.Icon && <content.Icon className="w-5 h-5 inline ml-2" />}
-                {content.label}</Link>
+            <Link href={`${href}`} className="block p-4 text-[15px]">
+                {content.Icon && <content.Icon className="w-5 h-5 inline mx-2" />}
+                {t(`menuDashboard.${content.label}`)}</Link>
         </li>
     }
     const MenuItem = ({ content }) => {
         const { title, children: _menuChild } = content
         return <li className="mt-7">
-            <span className="text-secondary-500 dark:text-gray-300 font-bold mb-3">{title}</span>
+            {title && <span className="text-secondary-500 dark:text-gray-300 font-bold mb-3">{t(`menuDashboard.${title}`)}</span>}
             <ul className='flex flex-col space-y-2 mt-1'>
                 {_menuChild?.map((item) => {
                     return <MenuItemChildren key={item.id} content={item} />
